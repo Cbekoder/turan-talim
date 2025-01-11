@@ -1,0 +1,113 @@
+# Uzbek translation of your project.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-14 19:35+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uzbek <LL@li.org>\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: core/settings.py:113
+msgid "English"
+msgstr "Inglizcha"
+
+#: core/settings.py:114
+msgid "Uzbek"
+msgstr "O'zbekcha"
+
+#: core/settings.py:115
+msgid "Turkish"
+msgstr "Turkcha"
+
+#: core/settings.py:116
+msgid "Russian"
+msgstr "Ruscha"
+
+#: templates/login_register.html:7
+msgid "Turon talim login or register"
+msgstr "Turon ta'lim tizimiga kirish yoki ro'yxatdan o'tish"
+
+#: templates/login_register.html:16
+msgid "Create Account"
+msgstr "Hisob yaratish"
+
+#: templates/login_register.html:22
+msgid "or use your email for registration"
+msgstr "yoki ro'yxatdan o'tish uchun emailingizdan foydalaning"
+
+#: templates/login_register.html:24
+msgid "Name"
+msgstr "Ism"
+
+#: templates/login_register.html:25 templates/login_register.html:42
+msgid "Email or Phone number"
+msgstr "Email yoki Telefon raqami"
+
+#: templates/login_register.html:26 templates/login_register.html:43
+msgid "Password"
+msgstr "Parol"
+
+#: templates/login_register.html:27
+#, fuzzy
+#| msgid "Password"
+msgid "Confirm Password"
+msgstr "Parol"
+
+#: templates/login_register.html:29 templates/login_register.html:61
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+#: templates/login_register.html:34
+msgid "Sign in"
+msgstr "Kirish"
+
+#: templates/login_register.html:40
+msgid "or use your account"
+msgstr "yoki hisobingizdan foydalaning"
+
+#: templates/login_register.html:44
+msgid "Forgot your password?"
+msgstr "Parolingizni unutdingizmi?"
+
+#: templates/login_register.html:45 templates/login_register.html:54
+msgid "Sign In"
+msgstr "Kirish"
+
+#: templates/login_register.html:52
+msgid "Welcome Back!"
+msgstr "Xush kelibsiz!"
+
+#: templates/login_register.html:53
+msgid "To keep connected with us please login with your personal info"
+msgstr ""
+"Biz bilan bog'lanishda qolish uchun, iltimos, shaxsiy ma'lumotlaringiz bilan "
+"tizimga kiring"
+
+#: templates/login_register.html:59
+msgid "Hello, Friend!"
+msgstr "Salom, Do'stim!"
+
+#: templates/login_register.html:60
+msgid "Enter your personal details and start journey with us"
+msgstr "Shaxsiy ma'lumotlaringizni kiriting va biz bilan safarni boshlang"
+
+#: templates/login_register.html:80
+#, fuzzy
+#| msgid "Password"
+msgid "Passwords match"
+msgstr "Parol"
+
+#: templates/login_register.html:83
+msgid "Passwords do not match"
+msgstr ""

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love You Design</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2196F3; /* Blue background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            width: 400px; /* Initial size */
+            height: 400px; /* Initial size */
+            background-image: url("../static/img/logo.png");
+            background-size: contain; /* Scales the image to fit within the div */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: transform 1s ease; /* Transition for scaling */
+        }
+
+        .logo:hover {
+            transform: scale(0.9); /* Shrink to 180x180 */
+        }
+
+        .logo.hovered {
+            transform: scale(1.05); /* Grow to 210x210 */
+        }
+
+        .text {
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <div class="text">Sevdiğim Yerdeyim</div>
+    </div>
+    <script>
+        const logo = document.querySelector('.logo');
+
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transition = 'transform 1s ease';
+            logo.classList.add('hovered'); // Add class to keep it larger
+            logo.style.transform = 'scale(0.9)'; // Shrink to 180x180
+            setTimeout(() => {
+                logo.style.transform = 'scale(1.05)'; // Grow to 210x210
+            }, 1000); // Wait 1 second before growing
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logo.classList.remove('hovered'); // Remove class to stop growing
+            logo.style.transition = 'transform 1s ease';
+            logo.style.transform = 'scale(1)'; // Return to original size over 1 second
+        });
+    </script>
+</body>
+</html>

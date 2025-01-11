@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+:root {
+    --primary: #1C77C3;
+    --secondary: #39A9DB;
+    --accent: #40BCD8;
+    --error: #D63230;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 640px;
+    margin: auto;
+    font-family: sans-serif;
+    padding: 10px;
+    padding-bottom: 160px;
+}
+
+button {
+    outline: none;
+}
+
+#preguntas ol {
+}
+
+#preguntas ol > li {
+    font-weight: bold;
+    color: var(--primary);
+    margin-top: 60px;
+}
+
+#preguntas ol ul {
+    list-style-type: lower-alpha;
+    padding: 0;
+    margin-top: -5px;
+    margin-left: 26px;
+}
+
+#preguntas ol ul li,
+#preguntas ol ul li p {
+    font-weight: normal;
+    margin: 11px 5px;
+}
+
+#preguntas ol ul li input {
+    display: none;
+}
+
+#preguntas ol ul li input + label,
+#preguntas ol ul li p,
+#preguntas ol ul li p.correcta {
+    border: solid 1px var(--accent);
+    padding: 2px 38px;
+    margin-left: -30px;
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+}
+
+#preguntas ol ul li input + label:hover {
+    background: white;
+    border-color: var(--secondary);
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+#preguntas ol ul li input:checked + label {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: #444;
+    padding-left: 55px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#preguntas button {
+    padding: 14px;
+    border-radius: 50px;
+    background: white;
+    width: 100%;
+    font-size: 1em;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: bold;
+    margin: 28px auto 12px auto;
+}
+
+#preguntas button:hover {
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+button, a, li, * {
+    transition: 0.3s;
+}
+
+#preguntas ol ul li {
+    color: grey !important;
+}
+
+.correcta {
+    border-color: var(--secondary) !important;
+    color: black;
+}
+
+.correcta span {
+    color: var(--secondary);
+}
+
+.seleccionado {
+    background: var(--accent);
+}
+
+.seleccionado.correcta {
+    background: var(--secondary);
+    padding-left: 55px !important;
+}
+
+.seleccionado.correcta span {
+    color: white;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 40%);
+    bottom: 0px;
+    left: 0px;
+    padding: 12px 10px 0px 10px;
+}
+
+footer button {
+    max-width: 550px;
+    margin: auto;
+    display: block;
+}
+
+.endtext {
+    color: var(--primary);
+    text-align: center;
+    margin: 80px auto;
+    width: 80%;
+}
+
+h1 {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    font-weight: normal;
+    color: #fff;
+    letter-spacing: 0.12em;
+    line-height: 0.96em;
+    font-family: "Quicksand", sans-serif;
+    font-size: 2.7em;
+
+    /* Background with gradient and rounded corners */
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 auto;
+
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, .12);
+    z-index: 10; /* Ensure it stays above other content */
+}
+
+
+span.contexto {
+    font-weight: normal;
+    color: white;
+    padding: 0;
+    margin: 10px 10px 10px -10px;
+    display: block;
+}
+
+* {
+    cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+::selection {
+    background: none;
+}
+
+@media print {
+    #preguntas, #preguntas * {
+        display: none;
+    }
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: red;
+    font-weight: bold;
+}

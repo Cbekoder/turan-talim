@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<h1>{{ exam.title }}</h1>
+<form method="post" id="preguntas">{% csrf_token %}
+    <ol>
+        {% for question_id, data in questions.items %}
+            <li>
+                {{ data.question.text }}
+                <ul>
+                    {% for option in data.options %}
+                        <li>
+                            <input type="radio" id="q{{ option.id }}a" name="q{{ question_id }}" value="{{ option.id }}">
+                            <label for="q{{ option.id }}a">{{ option.text }}</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ol>
+    <footer>
+        <button type="submit">Submit</button>
+    </footer>
+    <div class="endtext" id="result" style="display:none;"></div>
+</form>
+
+</body>
+</html>

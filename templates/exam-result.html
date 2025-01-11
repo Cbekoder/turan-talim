@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet">
+    <link href="{% static 'css/chat.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>{{ exam.title }}</h1>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>AI Assistant</h2>
+        </div>
+        <div class="chat-messages">
+            <div class="message-container">
+                <div class="message ai-message">
+                    <div class="avatar">
+                        <img src="{% static 'img/logo.png' %}" alt="AI Avatar">
+                    </div>
+                    <div class="message-content">
+                        <p>{{ analysis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message..." class="message-input">
+            <button class="send-button">Send</button>
+        </div>
+    </div>
+    <div id="preguntas">
+        <ol>
+            {% for question_id, data in result_data.items %}
+                <li>
+                    {{ data.question }}
+                    <ul>
+                        {% for option in data.options %}
+                            <li>
+                                <input type="radio" id="q{{ option.id }}a" name="q{{ question_id }}"
+                                       value="{{ option.id }}"
+                                       disabled
+                                        {# {% if option.is_selected %} checked {% endif %} #}>
+                                <label for="q{{ option.id }}a" class="
+                                    {% if option.is_correct %} correct {% elif option.is_selected and not option.is_correct %} incorrect {% endif %}
+                                ">
+                                    {{ option.text }}
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ol>
+        <div class="endtext" id="result" style="display:none;"></div>
+    </div>
+    <div class="bg"></div>
+</div>
+<script src="{% static 'js/chat.js' %}"></script>
+</body>
+</html>
