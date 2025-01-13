@@ -31,27 +31,6 @@ class Direction(models.Model):
         return "(No Image)"
     show_picture.short_description = "Yo'nalish rasmi"
 
-class Listening(models.Model):
-    title = models.CharField(max_length=150, verbose_name="Sarlavha")
-    picture = models.ImageField(upload_to='listening/', verbose_name="Rasm", null=True, blank=True)
-    description = models.TextField(verbose_name="Tavsif", null=True, blank=True)
-    direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, null=True, verbose_name="Yo'nalish")
-    submitters = models.IntegerField(default=0, verbose_name="Yuboruvchilar soni")
-
-    def __str__(self):
-        return self.title
-
-
-class Reading(models.Model):
-    title = models.CharField(max_length=150, verbose_name="Sarlavha")
-    picture = models.ImageField(upload_to='reading/', verbose_name="Rasm")
-    description = models.TextField(verbose_name="Tavsif")
-    direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, null=True, verbose_name="Yo'nalish")
-    submitters = models.IntegerField(default=0, verbose_name="Yuboruvchilar soni")
-
-    def __str__(self):
-        return self.title
-
 
 class Exam(models.Model):
     title = models.CharField(max_length=150, verbose_name="Sarlavha")
@@ -59,8 +38,8 @@ class Exam(models.Model):
     text = models.TextField(verbose_name="Imtixon matni", null=True, blank=True)
     description = models.TextField(verbose_name="Tavsif")
     direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, null=True, verbose_name="Yo'nalish")
-    listening = models.ForeignKey(Listening, on_delete=models.SET_NULL, null=True, verbose_name="Listening")
-    reading = models.ForeignKey(Reading, on_delete=models.SET_NULL, null=True, verbose_name="Reading")
+    # listening = models.ForeignKey(Listening, on_delete=models.SET_NULL, null=True, verbose_name="Listening")
+    # reading = models.ForeignKey(Reading, on_delete=models.SET_NULL, null=True, verbose_name="Reading")
     submitters = models.IntegerField(default=0, verbose_name="Yuboruvchilar soni")
 
     def __str__(self):
@@ -108,17 +87,6 @@ class Option(models.Model):
     class Meta:
         verbose_name = "Variant"
         verbose_name_plural = "Variantlar"
-
-
-class Writing(models.Model):
-    title = models.CharField(max_length=150, verbose_name="Sarlavha")
-    picture = models.ImageField(upload_to='writing/', verbose_name="Rasm")
-    description = models.TextField(verbose_name="Tavsif")
-    direction = models.ForeignKey(Direction, on_delete=models.SET_NULL, null=True, verbose_name="Yo'nalish")
-    submitters = models.IntegerField(default=0, verbose_name="Yuboruvchilar soni")
-
-    def __str__(self):
-        return self.title
 
 
 

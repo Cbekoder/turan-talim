@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="popup">
+    <div class="popup-content">
+        <h2>Welcome to Listening test!</h2>
+        <p>Click the button below to start the audio and begin the test.</p>
+        <button id="playAudio">Start Audio</button>
+    </div>
+</div>
+<form method="post" id="preguntas">{% csrf_token %}
+    <h1>{{ listening.title|linebreaksbr }}</h1>
+    <p>{{ listening.description|linebreaksbr }}</p>
+    {% for section in sections %}
+        <ol>
+            <h2>{{ section.test.title|linebreaksbr }}</h2>
+            <b>{{ section.test.description|linebreaksbr }}</b>
+            {% if section.test.audio %}
+                <audio id="audio{{ forloop.counter }}" src="{{ section.test.audio.url }}" preload="auto"></audio>
+            {% endif %}
+            {% if section.test.picture %}<img src="{{ section.test.picture.url }}">{% endif %}
+            {% if section.test.options %}
+                <p>{{ section.test.options|linebreaksbr }}</p>
+            {% endif %}
+            {% for test in section.questions %}
+                <li>
+                    {{ test.question.text|linebreaksbr }}
+                    {% if test.question.has_options %}
+                        <ul>
+                            {% for option in test.options %}
+                                <li>
+                                    <input type="radio" id="q{{ option.id }}a" name="q{{ test.question.id }}"
+                                           value="{{ option.id }}">
+                                    <label for="q{{ option.id }}a">{{ option.text }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <input type="text" id="q{{ option.id }}a" name="q{{ question_id }}">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+    <footer>
+        <button type="submit">Submit</button>
+    </footer>
+    <div class="endtext" id="result" style="display:none;"></div>
+</form>
+
+</body>
+<script src="{% static 'js/listening_audio.js' %}"></script>
+</html>

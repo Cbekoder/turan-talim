@@ -47,26 +47,3 @@ def send_to_ai(request):
     response = send_request(user_message)
     return JsonResponse({'response': response})
 
-
-
-class MultilevelListView(View):
-    def get(self, request):
-        context = {
-            'user': request.user,
-            'languages': Language.objects.all()
-        }
-        return render(request, 'multilevels.html', context)
-
-    def post(self, request, direction):
-        pass
-
-class MultilevelDetailView(View):
-    def get(self, request, pk):
-        context = {
-            'user': request.user,
-            'language': Language.objects.get(id=pk)
-        }
-        return render(request, 'multilevel-detail.html', context)
-
-    def post(self, request, direction):
-        pass

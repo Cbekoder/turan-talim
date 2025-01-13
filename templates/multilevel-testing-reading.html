@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet">
+</head>
+<body>
+{#<div class="popup">#}
+{#    <div class="popup-content">#}
+{#        <h2>Welcome to Listening test!</h2>#}
+{#        <p>Click the button below to start the audio and begin the test.</p>#}
+{#        <button id="playAudio">Start Audio</button>#}
+{#    </div>#}
+</div>
+<form method="post" id="preguntas">{% csrf_token %}
+    <h1>{{ reading.title|linebreaksbr }}</h1>
+    <p>{{ reading.description|linebreaksbr }}</p>
+    {% for section in sections %}
+        <ol>
+            {% if section.test.title %}
+                <h2>{{ section.test.title|linebreaksbr }}</h2>
+            {% endif %}
+            {% if section.test.description %}
+                <b>{{ section.test.description|linebreaksbr }}</b>
+            {% endif %}
+            {% if section.test.text %}
+                <p>{{ section.test.text|linebreaks }}</p>
+            {% endif %}
+            {% if section.test.picture %}
+                <img src="{{ section.test.picture.url }}">
+            {% endif %}
+            {% if section.test.options %}
+                <p>{{ section.test.options|linebreaksbr }}</p>
+            {% endif %}
+            {% if section.test.constraints %}
+                <p>{{ section.test.constraints|linebreaksbr }}</p>
+            {% endif %}
+            {% for test in section.questions %}
+                <li>
+                    {{ test.question.text|linebreaksbr }}
+                    {% if test.question.has_options %}
+                        <ul>
+                            {% for option in test.options %}
+                                <li>
+                                    <input type="radio" id="q{{ option.id }}a" name="q{{ test.question.id }}"
+                                           value="{{ option.id }}">
+                                    <label for="q{{ option.id }}a">{{ option.text }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <input type="text" id="q{{ option.id }}a" name="q{{ question_id }}">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+    <footer>
+        <button type="submit">Submit</button>
+    </footer>
+    <div class="endtext" id="result" style="display:none;"></div>
+</form>
+
+</body>
+</html>

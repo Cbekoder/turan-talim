@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
+    <link href="{% static 'css/quiz.css' %}" rel="stylesheet">
+    <link href="{% static 'css/writing.css' %}" rel="stylesheet">
+</head>
+<body>
+{#<div class="popup">#}
+{#    <div class="popup-content">#}
+{#        <h2>Welcome to Listening test!</h2>#}
+{#        <p>Click the button below to start the audio and begin the test.</p>#}
+{#        <button id="playAudio">Start Audio</button>#}
+{#    </div>#}
+<div id="app"></div>
+
+<form method="post" id="preguntas">{% csrf_token %}
+    <h1>{{ writing.title|linebreaksbr }}</h1>
+    <p>{{ writing.description|linebreaksbr }}</p>
+    <ol>
+        <li>
+            <h3>{{ writing.task1|linebreaksbr }}</h3>
+            <ul>
+                <div class="file-upload-wrapper" data-text="Select your file!">
+                    <input name="task1-file" type="file" class="file-upload-field" value="">
+                </div>
+                <li>
+                    <label for="task2">Task 1</label>
+                    <textarea id="lined-textarea" name="lined-textarea" oninput="autoResize(this)"></textarea><br>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3>{{ writing.task2|linebreaksbr }}</h3>
+            <ul>
+                <div class="file-upload-wrapper" data-text="Select your file!">
+                    <input name="task2-file" type="file" class="file-upload-field" value="">
+                </div>
+                <li>
+                    <label for="task2">Task 2</label>
+                    <textarea id="lined-textarea" name="lined-textarea" oninput="autoResize(this)"></textarea><br>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <footer>
+        <button type="submit">Submit</button>
+    </footer>
+    <div class="endtext" id="result" style="display:none;"></div>
+</form>
+<script src="{% static 'js/writing.js' %}"></script>
+</body>
+</html>
